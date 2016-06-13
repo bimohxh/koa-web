@@ -33,6 +33,7 @@ app.use(i18n(app, {
 
 // 静态文件服务
 app.use(mount('/assets', serve(__dirname + '/app/assets')));
+app.use(mount('/assets', serve(__dirname + '/vendor')));
 
 //session 处理
 /*app.keys = ['some secret hurr'];
@@ -47,7 +48,10 @@ app.use(views(__dirname + '/app/views', {
 
 
 // 路由
-let render = async (ctx, controller, action, extra)=> {
+let render = async (ctx, controller, action)=> {
+  let contr = require('./app/controllers/' + controller)
+  let para = await contr['get_' + action](ctx)
+
   let vi = controller + '/' + action + '.jade'
   await ctx.render(vi,
     _.extend({
@@ -57,28 +61,33 @@ let render = async (ctx, controller, action, extra)=> {
         action: action
       },
       //query: qs.parse(url.parse(ctx.request.url).query)
-    }, extra || {})
+    }, para || {})
   )
 }
  
 
-app.use(jwt({ secret: 'hxh', cookie: 'uid'}))
+//app.use(jwt({ secret: 'hxh', cookie: 'uid'}))
 
 router.get('/',  async (ctx, next) =>{
   await render(ctx, 'home', 'index')
 });
 
+router.get('/:action',  async (ctx, next) =>{
+  await render(ctx, 'home', ctx.params.action)
+});
+
+router.get('/resume/:uname',  async (ctx, next) =>{
+  await render(ctx, 'resume', 'index')
+});
+
 
 router.get('/:controller/:action',  async (ctx, next) =>{
-  let contr = require('./app/controllers/' + ctx.params.controller)
-  let para = await contr['get_' + ctx.params.action](ctx, next)
-  await render(ctx, ctx.params.controller, ctx.params.action, para)
+  await render(ctx, ctx.params.controller, ctx.params.action)
 });
 
-router.post('/:controller/:action',  async (ctx, next) =>{
-  let contr = require('./app/controllers/' + ctx.params.controller)
+/*router.post('/:controller/:action',  async (ctx, next) =>{
   await contr['post_' + ctx.params.action](ctx, next)
-});
+});*/
 
 
 

@@ -7,12 +7,11 @@ exports.get_index = async (ctx, next) =>{
   console.log("ok")
   ctx.session.user = ctx.session.user || 0
   ctx.session.user += 1*/
-  console.log(jwt.verify(ctx.cookies.get('uid'), 'hxh'))
-  return {
+  /*return {
     //menu: JSON.stringify(repos),
     //sion: ctx.i18n.__('hello')
-    sion: jwt.verify(ctx.cookies.get('uid'), 'hxh')
-  }
+    //sion: jwt.verify(ctx.cookies.get('uid'), 'hxh')
+  }*/
 }
 
 
