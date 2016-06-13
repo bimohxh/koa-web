@@ -4,11 +4,21 @@ require("babel-polyfill");
 const Koa = require('koa'),
       views = require('koa-views'),
       router = require('koa-router')(),
-      _ = require('underscore'),
-      orm = require("orm")
+      serve = require('koa-static'),
+      mount = require('koa-mount'),
+      session = require('koa-session'),
+      convert = require('koa-convert'),
+      _ = require('underscore')
 
 const app = new Koa()
 
+
+// 静态文件服务
+app.use(mount('/assets', serve(__dirname + '/app/assets')));
+
+//session 处理
+app.keys = ['some secret hurr'];
+app.use(convert(session(app)));
 
 //视图处理
 app.use(views(__dirname + '/app/views', {
@@ -40,7 +50,7 @@ router.get('/',  async (ctx, next) =>{
 
 router.get('/:controller/:action',  async (ctx, next) =>{
   let contr = require('./app/controllers/' + ctx.params.controller)
-  let para = await contr[ctx.params.action](ctx, next)
+  let para = await contr['get_' + ctx.params.action](ctx, next)
   await render(ctx, ctx.params.controller, ctx.params.action, para)
 });
 
@@ -51,7 +61,7 @@ app
   .use(router.allowedMethods());
 
 
-app.listen(3000)
+app.listen(2000)
 console.log('服务器启动...')
 
 
