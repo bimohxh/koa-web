@@ -16,7 +16,8 @@ exports.get_index = async (ctx, next) =>{
 
 
 
-exports.get_login = async (ctx, next) =>{
-  ctx.cookies.set('uid', jwt.sign({ uid: 2 }, 'hxh'))
-  ctx.body = "登陆成功"
+exports.get_signin = async (ctx, next) =>{
+}
+
+exports.get_signup = async (ctx, next) =>{
 }

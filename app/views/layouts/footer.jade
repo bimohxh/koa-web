@@ -1,2 +1,9 @@
 if localEnv.environment == 'development'
   include ./devFooter
+
+script.
+  document.addEventListener("turbolinks:load", function() {
+    if(typeof APP.#{route.controller}.#{route.action} == 'function'){
+      new APP.#{route.controller}.#{route.action}
+    }
+  })

@@ -1,0 +1,26 @@
+extends ../layouts/layout.jade
+block con
+  div.login-wraper
+    div.login-body
+      div.login-logo
+        i.fa.fa-user-secret
+      div.login-heading  邮箱登录
+      form
+        div.form-group
+          input(type="text" class="form-control" placeholder="邮箱")
+          i.fa.fa-envelope
+        
+        div.form-group  
+          input(type="password" class="form-control" placeholder="密码")
+          i.fa.fa-lock
+
+        div.form-group
+          button.btn.btn-default(@click="submit()" type="button") 登录  
+
+        p.login-footer
+          | 没有账号？马上
+          a(href="/signup") 注册
+
+
+
+      

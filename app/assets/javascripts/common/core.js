@@ -10,5 +10,24 @@ window.Core = {
     if (!window.APP) {window.APP = {}}
     if (!window.APP[Controller]) {window.APP[Controller] = {}}
     window.APP[Controller][action] =  myClass
-  }
+  },
+
+  /**
+   * 弹出提示框
+   * @param  {string} typ 消息类型：success, info, warning, danger
+   * @param  {string} msg 消息内容
+   * @param  {object} options 额外配置 delay 消失延时 top 距离顶部距离 
+   */
+  alert: (typ, msg, options)=> {
+    options = options || {}
+    let delay = options.delay || 3000
+    let top = options.top || 10
+    let box = $('<div class="alert alert-' + typ + ' alert-tip" role="alert" ><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + msg + '</div>')
+    $('body').append(box)
+    box.animate({top: top}, ()=> {
+      /*setTimeout(()=> {
+        box.remove()
+      }, delay)*/
+    })
+  },
 }

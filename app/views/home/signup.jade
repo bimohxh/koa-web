@@ -1,0 +1,59 @@
+extends ../layouts/layout.jade
+block con
+  div.login-wraper
+    div.login-body
+      div.login-logo
+        i.fa.fa-user-secret
+      div.login-heading  注册账号
+      form#form-signup
+        div.form-group
+          input(type="text" class="form-control" placeholder="邮箱" name="email")
+          i.fa.fa-envelope
+
+        div.form-group
+          input(type="text" class="form-control" placeholder="昵称" name="nc")
+          i.fa.fa-user    
+        
+        div.form-group  
+          input(type="password" class="form-control" placeholder="密码" name="pwd")
+          i.fa.fa-lock
+
+        div.form-group
+          button.btn.btn-default 注册  
+
+        p.login-footer
+          | 已有账号？马上
+          a(href="/signin") 登录
+
+  script.
+    document.addEventListener("turbolinks:load", function() {
+      $('#form-signup').validate({
+        rules: {
+          email: {
+            required: true,
+            email: true
+          },
+          nc: {
+            required: true,
+            //- remote: API.body(SITE.API.url + "admin/checkField", 'get',  {
+            //-   value: function() {
+            //-     return $("#memUid" ).val();
+            //-   },
+            //-   accountTyp: 'company',
+            //-   field: 'username'
+            //- }) 
+          },
+          pwd: {
+            required: true,
+            minlength: 6
+          }
+        },
+        messages: {
+          email: '邮箱格式错误',
+          nc: '昵称不能为空',
+          pwd: '密码必须大于6位'
+        }
+      })
+    })
+
+      
