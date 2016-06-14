@@ -11,7 +11,9 @@ const Koa = require('koa'),
       locale = require('koa-locale'),
       jwt = require('koa-jwt'),
       i18n = require('koa-i18n'),
-      _ = require('underscore')
+      _ = require('underscore'),
+      development = require('./lib/development'),
+      localEnv = require('./config/local_env')
 
 const app = new Koa()
 
@@ -34,6 +36,8 @@ app.use(i18n(app, {
 // 静态文件服务
 app.use(mount('/assets', serve(__dirname + '/app/assets')));
 app.use(mount('/assets', serve(__dirname + '/vendor')));
+app.use(mount('/tmp', serve(__dirname + '/tmp')));
+app.use(mount('/', serve(__dirname + '/public')));
 
 //session 处理
 /*app.keys = ['some secret hurr'];
@@ -60,6 +64,9 @@ let render = async (ctx, controller, action)=> {
         controller: controller,
         action: action
       },
+      development: development,
+      localEnv: localEnv
+
       //query: qs.parse(url.parse(ctx.request.url).query)
     }, para || {})
   )

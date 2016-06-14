@@ -7,9 +7,11 @@ Install dependencies,run:
 npm install
 ```
 
+
 Then start app: 
 ```bash
-npm statr
+pm2 start app.js --watch
+npm start
 ```
 
 viist `localhost:[port]`
