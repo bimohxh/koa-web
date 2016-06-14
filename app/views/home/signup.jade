@@ -7,19 +7,19 @@ block con
       div.login-heading  注册账号
       form#form-signup
         div.form-group
-          input(type="text" class="form-control" placeholder="邮箱" name="email")
+          input(type="text" class="form-control" placeholder="邮箱" name="email" v-model="mem.email")
           i.fa.fa-envelope
 
         div.form-group
-          input(type="text" class="form-control" placeholder="昵称" name="nc")
+          input(type="text" class="form-control" placeholder="昵称" name="nc" v-model="mem.nc")
           i.fa.fa-user    
         
         div.form-group  
-          input(type="password" class="form-control" placeholder="密码" name="pwd")
+          input(type="password" class="form-control" placeholder="密码" name="pwd" v-model="mem.pwd")
           i.fa.fa-lock
 
         div.form-group
-          button.btn.btn-default 注册  
+          button.btn.btn-default(type="button" @click="submit()") 注册  
 
         p.login-footer
           | 已有账号？马上
@@ -31,17 +31,18 @@ block con
         rules: {
           email: {
             required: true,
-            email: true
+            email: true,
+            remote: {
+              url: '/ckemail',
+              type: 'post'
+            }
           },
           nc: {
             required: true,
-            //- remote: API.body(SITE.API.url + "admin/checkField", 'get',  {
-            //-   value: function() {
-            //-     return $("#memUid" ).val();
-            //-   },
-            //-   accountTyp: 'company',
-            //-   field: 'username'
-            //- }) 
+            remote: {
+              url: '/cknc',
+              type: 'post'
+            }
           },
           pwd: {
             required: true,
@@ -49,8 +50,15 @@ block con
           }
         },
         messages: {
-          email: '邮箱格式错误',
-          nc: '昵称不能为空',
+          email: {
+            required: '邮箱不能为空',
+            email: '邮箱格式错误',
+            remote: '该邮箱已经注册，你可以尝试直接登陆'
+          },
+          nc: {
+            required: '昵称不能为空',
+            remote: '该昵称已被占用，请重新选择'
+          },
           pwd: '密码必须大于6位'
         }
       })

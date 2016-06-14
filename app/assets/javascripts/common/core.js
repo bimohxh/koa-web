@@ -25,9 +25,9 @@ window.Core = {
     let box = $('<div class="alert alert-' + typ + ' alert-tip" role="alert" ><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + msg + '</div>')
     $('body').append(box)
     box.animate({top: top}, ()=> {
-      /*setTimeout(()=> {
+      setTimeout(()=> {
         box.remove()
-      }, delay)*/
+      }, delay)
     })
   },
 }

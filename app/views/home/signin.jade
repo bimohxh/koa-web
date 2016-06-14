@@ -5,13 +5,13 @@ block con
       div.login-logo
         i.fa.fa-user-secret
       div.login-heading  邮箱登录
-      form
+      form#form-signin
         div.form-group
-          input(type="text" class="form-control" placeholder="邮箱")
+          input(type="text" class="form-control" placeholder="邮箱" v-model="mem.email" name="email")
           i.fa.fa-envelope
         
         div.form-group  
-          input(type="password" class="form-control" placeholder="密码")
+          input(type="password" class="form-control" placeholder="密码" v-model="mem.pwd" name="pwd")
           i.fa.fa-lock
 
         div.form-group
@@ -20,7 +20,26 @@ block con
         p.login-footer
           | 没有账号？马上
           a(href="/signup") 注册
-
+  
+  script.
+    document.addEventListener("turbolinks:load", function() {
+      $('#form-signin').validate({
+        rules: {
+          email: {
+            required: true,
+            email: true
+          },
+          pwd: {
+            required: true,
+            minlength: 6
+          }
+        },
+        messages: {
+          email: '邮箱不能为空',
+          pwd: '密码必须大于6位'
+        }
+      })
+    })
 
 
       

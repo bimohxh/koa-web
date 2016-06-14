@@ -9,6 +9,7 @@ const Koa = require('koa'),
       session = require('koa-session'),
       convert = require('koa-convert'),
       locale = require('koa-locale'),
+      bodyParser = require('koa-bodyparser'),
       jwt = require('koa-jwt'),
       i18n = require('koa-i18n'),
       _ = require('underscore'),
@@ -16,6 +17,8 @@ const Koa = require('koa'),
       localEnv = require('./config/local_env')
 
 const app = new Koa()
+
+app.use(bodyParser())
 
 // 本地化
 locale(app) 
@@ -39,9 +42,7 @@ app.use(mount('/assets', serve(__dirname + '/vendor')));
 app.use(mount('/tmp', serve(__dirname + '/tmp')));
 app.use(mount('/', serve(__dirname + '/public')));
 
-//session 处理
-/*app.keys = ['some secret hurr'];
-app.use(convert(session(app)));*/
+
 
 //视图处理
 app.use(views(__dirname + '/app/views', {
@@ -57,6 +58,10 @@ let render = async (ctx, controller, action)=> {
   let para = await contr['get_' + action](ctx)
 
   let vi = controller + '/' + action + '.jade'
+
+  let mem = ctx.cookies.get('mem') ? jwt.verify(ctx.cookies.get('mem'), localEnv.jwtkey) : null
+
+  console.log('mem', mem)
   await ctx.render(vi,
     _.extend({
       params: ctx.params,
@@ -65,7 +70,8 @@ let render = async (ctx, controller, action)=> {
         action: action
       },
       development: development,
-      localEnv: localEnv
+      localEnv: localEnv,
+      mem: mem
 
       //query: qs.parse(url.parse(ctx.request.url).query)
     }, para || {})
@@ -73,14 +79,20 @@ let render = async (ctx, controller, action)=> {
 }
  
 
-//app.use(jwt({ secret: 'hxh', cookie: 'uid'}))
+//app.use(jwt({ secret: 'hxh', cookie: 'mem'}))
 
 router.get('/',  async (ctx, next) =>{
   await render(ctx, 'home', 'index')
 });
 
 router.get('/:action',  async (ctx, next) =>{
-  await render(ctx, 'home', ctx.params.action)
+  let normals = ['signin', 'signup', 'index']
+  if (normals.indexOf(ctx.params.action) > -1) {
+    await render(ctx, 'home', ctx.params.action)
+  }else{
+    await render(ctx, 'resume', 'index')
+  }
+  
 });
 
 router.get('/resume/:uname',  async (ctx, next) =>{
@@ -92,9 +104,15 @@ router.get('/:controller/:action',  async (ctx, next) =>{
   await render(ctx, ctx.params.controller, ctx.params.action)
 });
 
-/*router.post('/:controller/:action',  async (ctx, next) =>{
+router.post('/:action',  async (ctx, next) =>{
+  let contr = require('./app/controllers/home')
   await contr['post_' + ctx.params.action](ctx, next)
-});*/
+});
+
+router.post('/:controller/:action',  async (ctx, next) =>{
+  let contr = require('./app/controllers/' + ctx.params.controller)
+  await contr['post_' + ctx.params.action](ctx, next)
+});
 
 
 
