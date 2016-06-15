@@ -1,0 +1,29 @@
+.resume-wraper{
+  max-width: 80%;
+  background-color: #FFF;
+  margin: 0 auto;
+  box-shadow: 1px 1px 1px #DDD;
+  padding: 6rem;
+  .avatar-wraper{
+    text-align: center;
+    border-bottom: #ebebeb 1px solid;
+    height: 4rem;
+    margin-bottom: 4rem;
+  }
+  .avatar{
+    width: 7rem;
+    height: 7rem;
+    padding: 1rem;
+    background-color: #FFF;
+    border-radius: 100%;
+  }
+
+  .info-wraper{
+    text-align: center;
+  }
+
+  h5 {
+    text-align: center;
+    padding: 1rem;
+  }
+}

@@ -1,3 +1,36 @@
 extends ../layouts/layout.jade
 block con 
-  div.resume
+  div.resume-wraper
+    div.avatar-wraper
+      img.avatar(src="#{mem.avatar}")
+
+    div.info-wraper
+      p 全站开发工程师
+
+      p 黄小红 ● 男 ● 汉族 ● 1989-07-10 ● 现居北京的四川人 ● 未婚 
+
+      p 毕业于成都理工大学 ● 3年工作经验 ● 主要做Rails和前端开发 ● 目前就职于北京某互联网公司
+
+    div.item-wraper
+      h5 技术站  
+      p 前端：JavaScript、HTML、CSS、Node.js、CoffeeScript、Sass、Gulp、AngularJS、Bootstrap、Autoprefixer
+
+      p 后端：Ruby on Rails、NodeJS、C#
+
+      p 数据库：MySQL MSSQLServer Redis MongoDB
+
+    div
+      h5 项目
+
+      h6 人人健康网 
+      p 人人健康网是我们公司开发的健康社交平台，包含了社交、应用、商城模块
+      p 技术栈：Ruby on Rails、jQuery、Bootstrap、AngularJS、Mysql
+      p 版本控制：GitLab 搭建在公司内部服务器上
+      p 部署：Nginx + Passenger 阿里云ECS 负载均衡
+      p 功能点：会员、OAuth认证、评论、关注、消息通知、评论模块、问答模块、各种应用
+
+
+
+
+
+

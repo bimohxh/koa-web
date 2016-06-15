@@ -8,9 +8,10 @@ nav.navbar.navbar-light.bg-faded
       ul.nav.navbar-nav.pull-right
         li.nav-item
           if mem
-            a.nav-link(href="/mem")= mem.nc  
+            a(href="/mem"): img.avatar(src="#{mem.avatar}")
           else
-            a.nav-link(href="/signin")  登录
+            a.nav-link(href="/signin") 登录
+              
     
     div.clearfix
     button.navbar-toggler.hidden-sm-up(type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header")  &#9776;

@@ -5,9 +5,28 @@ body{
 }
 
 
+//- bootstrap patch
 .form-control{
   border-radius: 0
 }
+
+.card {
+  border: none;
+  box-shadow: 1px 1px 1px #d4d4d4;
+  img {
+    width: 100%;
+  }
+}
+
+nav.navbar{
+  .avatar {
+    width: 30px; 
+    height: 30px;
+    border-radius: 100%;
+    box-shadow: 1px 1px 1px #DDD;
+  }
+}
+
 
 .turbolinks-progress-bar {
   height: 5px;

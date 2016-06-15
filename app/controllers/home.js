@@ -28,7 +28,7 @@ exports.post_signin = async (ctx, next) =>{
 
   let mem = await Table.Mem.where({email: body.email, pwd: pwd}).fetch()
   if (mem) {
-    ctx.cookies.set('mem', jwt.sign({uid: mem.id, nc: mem.get('nc')}, localEnv.jwtkey))
+    ctx.cookies.set('mem', jwt.sign({uid: mem.id}, localEnv.jwtkey))
     ctx.body = true
   }else{
     ctx.body = false

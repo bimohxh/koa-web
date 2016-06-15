@@ -14,7 +14,8 @@ const Koa = require('koa'),
       i18n = require('koa-i18n'),
       _ = require('underscore'),
       development = require('./lib/development'),
-      localEnv = require('./config/local_env')
+      localEnv = require('./config/local_env'),
+      Table = require('./lib/table')
 
 const app = new Koa()
 
@@ -59,9 +60,15 @@ let render = async (ctx, controller, action)=> {
 
   let vi = controller + '/' + action + '.jade'
 
-  let mem = ctx.cookies.get('mem') ? jwt.verify(ctx.cookies.get('mem'), localEnv.jwtkey) : null
+  var mem = null
+  if (ctx.cookies.get('mem')) {
+    let mid = jwt.verify(ctx.cookies.get('mem'), localEnv.jwtkey).uid
+    mem = await Table.Mem.where({id: mid}).fetch()
+    console.log(mem)
+  };
+  
 
-  console.log('mem', mem)
+  
   await ctx.render(vi,
     _.extend({
       params: ctx.params,
@@ -85,8 +92,18 @@ router.get('/',  async (ctx, next) =>{
   await render(ctx, 'home', 'index')
 });
 
+
+router.get('/mem',  async (ctx, next) =>{
+  await render(ctx, 'mem', 'index')
+});
+
+router.get('/resume/:rid',  async (ctx, next) =>{
+  await render(ctx, 'resume', 'index')
+});
+
+
 router.get('/:action',  async (ctx, next) =>{
-  let normals = ['signin', 'signup', 'index']
+  let normals = ['signin', 'signup', 'index', 'mem']
   if (normals.indexOf(ctx.params.action) > -1) {
     await render(ctx, 'home', ctx.params.action)
   }else{
@@ -94,6 +111,8 @@ router.get('/:action',  async (ctx, next) =>{
   }
   
 });
+
+
 
 router.get('/resume/:uname',  async (ctx, next) =>{
   await render(ctx, 'resume', 'index')

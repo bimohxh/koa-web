@@ -1,33 +1,33 @@
 0 info it worked if it ends with ok
 1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
-2 info using npm@3.7.3
-3 info using node@v5.8.0
+2 info using npm@3.9.3
+3 info using node@v6.2.1
 4 verbose run-script [ 'prestart', 'start', 'poststart' ]
 5 info lifecycle koa-demo@1.0.0~prestart: koa-demo@1.0.0
 6 silly lifecycle koa-demo@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle koa-demo@1.0.0~start: koa-demo@1.0.0
 8 verbose lifecycle koa-demo@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle koa-demo@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/home/hxh/share/koa-demo/node_modules/.bin:/usr/local/bin:/home/hxh/.npm-global/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/bin
+9 verbose lifecycle koa-demo@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/home/hxh/share/koa-demo/node_modules/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/bin
 10 verbose lifecycle koa-demo@1.0.0~start: CWD: /home/hxh/share/koa-demo
 11 silly lifecycle koa-demo@1.0.0~start: Args: [ '-c', 'node tool/watch.js' ]
 12 silly lifecycle koa-demo@1.0.0~start: Returned: code: 1  signal: null
 13 info lifecycle koa-demo@1.0.0~start: Failed to exec start script
 14 verbose stack Error: koa-demo@1.0.0 start: `node tool/watch.js`
 14 verbose stack Exit status 1
-14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:239:16)
-14 verbose stack     at emitTwo (events.js:100:13)
-14 verbose stack     at EventEmitter.emit (events.js:185:7)
+14 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:245:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at EventEmitter.emit (events.js:191:7)
 14 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
-14 verbose stack     at emitTwo (events.js:100:13)
-14 verbose stack     at ChildProcess.emit (events.js:185:7)
-14 verbose stack     at maybeClose (internal/child_process.js:850:16)
+14 verbose stack     at emitTwo (events.js:106:13)
+14 verbose stack     at ChildProcess.emit (events.js:191:7)
+14 verbose stack     at maybeClose (internal/child_process.js:852:16)
 14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:215:5)
 15 verbose pkgid koa-demo@1.0.0
 16 verbose cwd /home/hxh/share/koa-demo
 17 error Linux 3.13.0-32-generic
 18 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
-19 error node v5.8.0
-20 error npm  v3.7.3
+19 error node v6.2.1
+20 error npm  v3.9.3
 21 error code ELIFECYCLE
 22 error koa-demo@1.0.0 start: `node tool/watch.js`
 22 error Exit status 1
