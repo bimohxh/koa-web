@@ -1,9 +1,16 @@
-if localEnv.environment == 'development'
-  include ./devFooter
+//- if localEnv.environment == 'development'
+//-   include ./devFooter
+
+//- script.
+//-   //$(document).on("turbolinks:load", function() {
+//-   console.log('#{route.controller}.#{route.action}')
+//-   if(typeof APP.#{route.controller}.#{route.action} == 'function'){
+//-     new APP.#{route.controller}.#{route.action}()
+//-   }
+//-   //})
 
 script.
-  document.addEventListener("turbolinks:load", function() {
-    if(typeof APP.#{route.controller}.#{route.action} == 'function'){
-      new APP.#{route.controller}.#{route.action}
-    }
-  })
+  if(typeof APP.#{route.controller}.#{route.action} == 'function'){
+    console.log('#{route.controller}.#{route.action}')
+    new APP.#{route.controller}.#{route.action}()
+  }

@@ -9,6 +9,7 @@ class Signup extends Basic {
   }
 
   submit(){
+    console.log($('#form-signup'))
     if(!$('#form-signup').valid()){return false}
     $.post('/signup', model.mvvm.mem, (data)=> {
       Core.alert('success', '注册成功')
