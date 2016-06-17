@@ -7,8 +7,8 @@ window.Core = {
    * @return {void}           
    */
   expose: (Controller, action, myClass)=> {
-    if (!window.APP) {window.APP = {}}
-    if (!window.APP[Controller]) {window.APP[Controller] = {}}
+    window.APP = window.APP || {}
+    window.APP[Controller] = window.APP[Controller] || {}  
     window.APP[Controller][action] =  myClass
   },
 

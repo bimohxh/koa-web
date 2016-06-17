@@ -97,9 +97,11 @@ router.get('/mem',  async (ctx, next) =>{
   await render(ctx, 'mem', 'index')
 });
 
-router.get('/resume/:rid',  async (ctx, next) =>{
+router.get('/resume/:id',  async (ctx, next) =>{
   await render(ctx, 'resume', 'index')
 });
+
+
 
 
 router.get('/:action',  async (ctx, next) =>{
@@ -121,6 +123,16 @@ router.get('/resume/:uname',  async (ctx, next) =>{
 
 router.get('/:controller/:action',  async (ctx, next) =>{
   await render(ctx, ctx.params.controller, ctx.params.action)
+});
+
+
+router.get('/:controller/:id/:action',  async (ctx, next) =>{
+  await render(ctx, ctx.params.controller, ctx.params.action)
+});
+
+router.post('/:controller/:id/:action',  async (ctx, next) =>{
+  let contr = require('./app/controllers/' + ctx.params.controller)
+  await contr['post_' + ctx.params.action](ctx, next)
 });
 
 router.post('/:action',  async (ctx, next) =>{
