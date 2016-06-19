@@ -64,7 +64,6 @@ let render = async (ctx, controller, action)=> {
   if (ctx.cookies.get('mem')) {
     let mid = jwt.verify(ctx.cookies.get('mem'), localEnv.jwtkey).uid
     mem = await Table.Mem.where({id: mid}).fetch()
-    console.log(mem)
   };
   
 

@@ -1,29 +1,92 @@
 .resume-wraper{
   max-width: 80%;
   background-color: #FFF;
-  margin: 0 auto;
+  margin: 3rem auto;
   box-shadow: 1px 1px 1px #DDD;
-  padding: 6rem;
-  .avatar-wraper{
-    text-align: center;
-    border-bottom: #ebebeb 1px solid;
-    height: 4rem;
-    margin-bottom: 4rem;
-  }
+  padding:4rem 6rem;
+  padding-top: 1rem;
   .avatar{
-    width: 7rem;
-    height: 7rem;
-    padding: 1rem;
-    background-color: #FFF;
-    border-radius: 100%;
+    width: 100%;
+
   }
 
-  .info-wraper{
+  h4 {
     text-align: center;
+    padding: 2rem;
+    padding-top: 0rem;
+    margin: 3rem 0;
+    border-bottom: #DDD 1px dashed;
   }
 
-  h5 {
+  &.resume-nav{
     text-align: center;
+    font-size: 1.2rem;
+    padding: 0;
+    a{
+      color: #333;
+      padding: 2rem;
+      display: inline-block;
+      text-decoration: none;
+      &.active{
+        border-bottom: #DDD .5rem solid;
+      }
+    }
+  }
+}
+
+.theme-wraper{
+  max-width: 80%;
+  margin: 0 auto;
+  img{
+    max-width: 100%;
     padding: 1rem;
   }
+  .slick-slide{
+    position: relative;
+  }
+  .slick-slide .image {
+    padding: 1rem;
+    max-width: 10rem;
+    & > a{
+      display: inline-block;
+      background-color: #FFF;
+      position: relative;
+      color: #b3b3b3;
+      text-align: center;
+      text-decoration: none;
+    }
+    .cover{
+      background-color: rgba(0, 0, 0, 0.19);
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      text-align: center;
+      line-height: 12rem;
+      i{
+        color: #333;
+        color: #d4d4d4;
+        font-size: 1.5rem;
+        background-color: rgba(0, 0, 0, 0.31);
+        padding: 1rem;
+        border-radius: 100%;
+      }
+    }
+    &.active{
+      .cover{
+        display: block;
+      }
+    }
+  }
+}
+
+.resume-preview{
+  max-width: 80%;
+  background-color: #FFF;
+  margin: 3rem auto;
+  box-shadow: 1px 1px 1px #DDD;
+  padding:4rem 6rem;
+  padding-top: 1rem;
+
 }

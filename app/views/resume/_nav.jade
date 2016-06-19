@@ -1,0 +1,10 @@
+- navs = [['edit', '内容编辑'], ['design', '设计&预览'], ['publish', '发布投递']]
+
+div.resume-wraper.resume-nav
+  div.row
+    each nav in navs
+      div.col-md-4
+        if params.action == nav[0]
+          a.active= nav[1]
+        else
+          a(href="/resume/#{params.id}/#{nav[0]}")= nav[1]

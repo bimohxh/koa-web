@@ -1,0 +1,26 @@
+extends ../layouts/layout.jade
+block con 
+  include ./_nav
+
+  div.theme-wraper
+    for item in themes
+      div
+        div.image(class="{{theme.id == #{item.id} ? 'active' : ''}}")
+          a(href="javascript:void(0)")
+            img(src="/assets/images/theme/#{item.thumbnail}" @click="switchTheme(#{item.id})")
+            p= item.name
+            div.cover
+              i.fa.fa-check
+      
+  div(class="resume-{{theme.key}}").resume-preview
+    {{{resumeRaw}}}
+  script.
+    $('.theme-wraper').slick({
+      infinite: true,
+      slidesToScroll: 2,
+      variableWidth: true,
+      prevArrow: '<button class="slick-prev slick-arrow"><i class="fa fa-angle-left"></i></button>',
+      nextArrow: '<button class="slick-next slick-arrow"><i class="fa fa-angle-right"></i></button>'
+    });
+
+    var TID = #{resume.theme_id}
