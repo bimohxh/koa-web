@@ -1,6 +1,7 @@
 extends ../layouts/layout.jade
 block con 
   include ./_nav
+  
   div.resume-wraper
     //- div.avatar-wraper
     //-   img.avatar(src="#{mem.avatar}")
@@ -63,11 +64,15 @@ block con
           div.form-group
             div &nbsp;
             button.btn.btn-default 添加      
-          
+  
+  div.plate-nav(v-cloak)
+    ul
+      li(v-for="item in plates") {{item.name}}        
       
   script.
-    var Rid = #{params.id}    
-
+    var Rid = #{params.id}  
+    $('.plate-nav').pin()
+  
 
 
 

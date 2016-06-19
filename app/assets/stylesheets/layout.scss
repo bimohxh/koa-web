@@ -27,6 +27,9 @@ nav.navbar{
   }
 }
 
+.container{
+  position: relative;
+}
 
 .turbolinks-progress-bar {
   height: 5px;
@@ -37,3 +40,6 @@ nav.navbar{
 .alert-tip{
   position: fixed;  top: -100px;  width: 400px;  left: 50%;  margin-left: -200px;  z-index: 2000;     background-image: none;
 }
+
+
+[v-cloak]{display: none;}

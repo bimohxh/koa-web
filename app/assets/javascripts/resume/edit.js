@@ -5,28 +5,37 @@ class Edit extends Basic {
     super({
       vue: {
         data: {
-          resume: {}
+          resume: {},
+          plates: []
         }
       }
     });
     model = this;
 
     this.register([])
+    this.getResume()
     this.getPlates()
+
+    
   }
 
   /**
    * 获取当前用到的版块和内容
    */
-  getPlates(){
+  getResume(){
     $.post('/resume/' + Rid + '/index', {}, (data)=> {
-      /*model.mvvm.plates = _.reduce(data.items, (result, item)=> {
-        result[item.plate.key] = item.plate
-        result[item.plate.key].data = item['plate_' + item.plate.key]
-        return result
-      }, {})*/
       model.mvvm.resume = data
     })
   }
+
+  /**
+    获取所有版块
+  */
+  getPlates(){
+    $.post('/resume/' + Rid + '/plates', {}, (data)=> {
+      model.mvvm.plates = data
+    })
+  }
+
 }
 Core.expose('resume', 'edit', Edit)

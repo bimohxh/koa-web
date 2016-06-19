@@ -1,11 +1,23 @@
 div
   h4 个人资料
-
-  span 姓名： #{resume.info.name}
-  span 性别： #{resume.info.gender}
-  span 手机： #{resume.info.mobile}
-  span 邮箱： #{resume.info.email}
+  
+  div.plate-info
+    label 姓名：
+    span  #{resume.info.name}
+    label 性别：
+    span #{resume.info.gender}
+    label 手机：
+    span #{resume.info.mobile}
+    label 邮箱：
+    span #{resume.info.email}
 
   h4 职业技能
+  div.plate-skill
+    ul
+      each item in resume.skills
+        li
+          label= item.name
+          span= item.level
+
 
 

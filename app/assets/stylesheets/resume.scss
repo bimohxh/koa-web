@@ -90,3 +90,25 @@
   padding-top: 1rem;
 
 }
+
+.plate-nav{
+  display: inline-block;
+  position: absolute;
+  background-color: #FFF;
+  top: 9rem;
+  ul{
+    margin: 0;
+    padding: 0;
+  }
+  li{
+    list-style: none;
+    text-align: center;
+    padding: 1rem;
+    border-top: #f5f5f5 1px solid;
+    cursor: pointer;
+    &.active{
+      background-color: #ff8b88;
+      color: #ffffff;
+    }
+  }
+}
