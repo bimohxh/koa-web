@@ -1,17 +1,6 @@
-script(src="/assets/javascripts/jquery.min.js")
-script(src="/assets/javascripts/underscore-min.js")
-script(src="/assets/javascripts/vue.js")
-script(src="/assets/javascripts/tether.min.js")
-script(src="/assets/javascripts/turbolinks.js")
-script(src="/assets/javascripts/bootstrap.min.js")
-script(src="/assets/javascripts/jquery.validate.min.js")
-script(src="/assets/javascripts/slick.min.js")
-script(src="/assets/javascripts/jquery.pin.js")
-  
+each item in development.assets.vendor.javascripts
+  script(src="/assets/javascripts/#{item}.js")
 
 each item in development.assets.javascripts
   script(src="#{item}")
-
-script(src="/tmp/assets/javascripts/home/signup.js")
-script(src="/tmp/assets/javascripts/home/signin.js")
 

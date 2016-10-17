@@ -1,17 +1,14 @@
-const webpack = require("webpack")
+const webpack = require('webpack')
+const WH = require('./tool/webpack_helper')
 
 module.exports = {
-  entry:  __dirname + '/app/assets/javascripts/common/core.js',
-  /*entry: {
-    order: './src/js/controller/order/index.js'
-  },*/
+  entry: WH.makeEntry(),
   output: {
-    /*path: __dirname + '/tmp/assets/javascripts',*/
-    filename: "[name].js"
+    path: __dirname + '/tmp/assets/javascripts',
+    filename: '[name]'
   },
   resolve: {
     alias: {
-      'swiper.jquery.min' : 'libs/swiper.jquery.min.js', 
     }
   },
   module: {
@@ -34,4 +31,3 @@ module.exports = {
     new webpack.optimize.LimitChunkCountPlugin({maxChunks: 1})
   ]
 }
- 

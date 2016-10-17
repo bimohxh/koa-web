@@ -1,4 +1,10 @@
 node_modules
+start.sh
 npm-debug.log
-tmp/*
+.sass-cache
+# VIM
+*~
+*.swp
+config/local_env.json
+tmp/
 !.keep

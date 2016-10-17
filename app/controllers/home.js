@@ -1,6 +1,6 @@
 const Table = require('../../lib/table'),
       jwt = require('koa-jwt'),
-      localEnv = require('../../config/local_env')
+      localEnv = require('../../lib/local_config')
 
 
 exports.get_index = async (ctx, next) =>{
