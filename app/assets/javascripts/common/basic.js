@@ -9,9 +9,9 @@ class Basic {
     model = this
     
     let mvvmDefault = {
-      el: 'body',
+      el: '#app',
       data: {
-        //session: SITE.session
+        //session: SITE.session,
       },
       components: {
         //'vue-area': vuearea,
@@ -36,6 +36,7 @@ class Basic {
      * 子类通过 this.register([]) 注册 vue methods
      */
     
+    console.log('==', JSON.stringify(initData))
     this.mvvm = new Vue(mvvmDefault)
     
     window.MVVM = this.mvvm
