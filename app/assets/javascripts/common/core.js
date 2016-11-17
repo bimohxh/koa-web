@@ -29,5 +29,5 @@ window.Core = {
         box.remove()
       }, delay)
     })
-  },
+  }
 }

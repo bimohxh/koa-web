@@ -2,10 +2,8 @@ meta(charset="utf-8")
 meta(name="viewport" content="width=device-width, initial-scale=1")
 title 搭配家后台管理系统 
 
-if localEnv.environment == 'development'
-  include ./devHeader
-
-
+each item in development.assets.vendor.stylesheets
+  link(href="/assets/stylesheets/#{item}.css" rel="stylesheet")
 
 //- 存入后端的某些公共变量供JS使用  全局配置
 script.
@@ -16,7 +14,6 @@ script.
     }
 
   }
-  //console.log("ww", "#{route.controller}.#{route.action}")
 
 
 

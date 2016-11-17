@@ -4,18 +4,13 @@ let model;
  */
 
 class Basic {
-  constructor(initData = {}){ 
+  constructor(initData = {}){
+    require('../../stylesheets/' + SITE.router.controller + '.scss')
 
     model = this
     
     let mvvmDefault = {
-      el: '#app',
-      data: {
-        //session: SITE.session,
-      },
-      components: {
-        //'vue-area': vuearea,
-      }
+      el: '#app'
     }
 
 

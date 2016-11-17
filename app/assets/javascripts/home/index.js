@@ -1,29 +1,18 @@
-let model;
+import vuenews from '../../../components/news/news.vue'
+let model
 
 class Index extends Basic {
   constructor(){
     super({
       vue: {
-        data: {
-          items: [
-            {
-              name: 'hxh',
-              age: 24
-            },
-            {
-              name: 'Tom',
-              age: 36
-            }
-          ]
+        components: {
+          'vue-news': vuenews
         }
       }
-    });
-    this.say()
-    model = this;
-  }
-
-  say () {
-    console.log('妈的')
+    })
+    model = this
   }
 }
+
+
 Core.expose('home', 'index', Index)

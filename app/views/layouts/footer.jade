@@ -1,8 +1,11 @@
-if localEnv.environment == 'development'
-  include ./devFooter
+each item in development.assets.vendor.javascripts
+  script(src="/assets/javascripts/#{item}.js")
+
+
+script(src="/tmp/assets/javascripts/common.js")
+script(src="/tmp/assets/javascripts/controller/#{route.controller}/#{route.action}.js")
 
 script.
-  console.log('#{route.controller}.#{route.action}')
   if(typeof APP.#{route.controller}.#{route.action} == 'function'){
     new APP.#{route.controller}.#{route.action}()
   }

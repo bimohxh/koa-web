@@ -1,5 +1,6 @@
 const webpack = require('webpack')
 const WH = require('./tool/webpack_helper')
+const path = require('path')
 
 module.exports = {
   entry: WH.makeEntry(),
@@ -24,6 +25,10 @@ module.exports = {
         query: {
           presets: ['es2015-loose']
         }
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
       }
     ]
   },

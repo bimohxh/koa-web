@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js | node tool/watch.js | webpack --watch| browser-sync start -c ./config/bs-config.js",
+    "start": "node app.js |  webpack --watch| browser-sync start -c ./config/bs-config.js",
     "migrate": "knex migrate:latest"
   },
   "author": "",
@@ -44,6 +44,9 @@
     "webpack": "^1.12.14"
   },
   "devDependencies": {
-    "chokidar": "^1.5.2"
+    "chokidar": "^1.5.2",
+    "css-loader": "^0.25.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1"
   }
 }
